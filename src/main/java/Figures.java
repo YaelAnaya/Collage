@@ -9,11 +9,11 @@ public class Figures {
     private Trapeze[] trapezes;
 
     public Figures() {
-        squares = new Square[50];
-        rectangles = new Rectangle[50];
-        circles = new Circle[50];
-        triangles = new Triangle[50];
-        trapezes = new Trapeze[50];
+        squares = new Square[20];
+        rectangles = new Rectangle[20];
+        circles = new Circle[20];
+        triangles = new Triangle[20];
+        trapezes = new Trapeze[20];
     }
     public Square randomSquare(){
         int posX = (int) (Math.random() * 750);
@@ -64,11 +64,9 @@ public class Figures {
     }
 
     public String randomColor(){
-        String color;
         int option = (int) (Math.random() * 7 + 1);
-        color = switch (option) {
+        String color = switch (option) {
             case 1 -> "red";
-            case 2 -> "black";
             case 3 -> "blue";
             case 4 -> "yellow";
             case 5 -> "green";
@@ -80,14 +78,103 @@ public class Figures {
     }
 
     public void createFigures(){
+        for (int i = 0; i < 20; i++) {
+            squares[i] = randomSquare();
+            squares[i].makeVisible();
+            circles[i] = randomCircle();
+            circles[i].makeVisible();
+            trapezes[i] = randomTrapeze();
+            trapezes[i].makeVisible();
+            triangles[i] = randomTriangle();
+            triangles[i].makeVisible();
+            rectangles[i]= randomRectangle();
+            rectangles[i].makeVisible();
+        }
+    }
+
+    public void squares() {
+        for (int i = 0; i < 20; i++) {
+            squares[i] = randomSquare();
+            squares[i].makeVisible();
+        }
+    }
+
+    public void circles(){
+        for (int i = 0; i < 20; i++) {
+            circles[i] = randomCircle();
+            circles[i].makeVisible();
+        }
+    }
+
+    public void trapezes(){
+        for (int i = 0; i < 20; i++) {
+            trapezes[i] = randomTrapeze();
+            trapezes[i].makeVisible();
+        }
+    }
+
+    public void triangles(){
+        for (int i = 0; i < 20; i++) {
+            triangles[i] = randomTriangle();
+            triangles[i].makeVisible();
+        }
+    }
+
+    public void rectangles(){
+        for (int i = 0; i < 20; i++) {
+            rectangles[i] = randomRectangle();
+            rectangles[i].makeVisible();
+        }
+    }
+
+    public void hide(int c) {
+        for(int i=0;i<20;i++){
+            switch (c) {
+                case 0 -> hideAll();
+                case 1 -> circles[i].makeInvisible();
+                case 2 -> triangles[i].makeInvisible();
+                case 3 -> squares[i].makeInvisible();
+                case 4 -> rectangles[i].makeInvisible();
+                case 5 -> trapezes[i].makeInvisible();
+            }
+
+        }
 
     }
 
-    public void mostrarFiguras(){
+    public void hideAll() {
+        for (int i = 0; i < 20; i++) {
+            squares[i].makeInvisible();
+            circles[i].makeInvisible();
+            trapezes[i].makeInvisible();
+            triangles[i].makeInvisible();
+            rectangles[i].makeInvisible();
+        }
+    }
+
+    public void changeColor(int option, String color){
+        for (int i = 0; i < 20; i++) {
+            switch (option) {
+                case 0 -> changeAllColors(color);
+                case 1 -> circles[i].changeColor(color);
+                case 2 -> triangles[i].changeColor(color);
+                case 3 -> squares[i].changeColor(color);
+                case 4 -> rectangles[i].changeColor(color);
+                case 5 -> trapezes[i].changeColor(color);
+            }
+        }
 
     }
 
-
+    public void changeAllColors(String color) {
+        for (int i = 0; i < 20; i++) {
+            squares[i].changeColor(color);
+            circles[i].changeColor(color);
+            triangles[i].changeColor(color);
+            trapezes[i].changeColor(color);
+            rectangles[i].changeColor(color);
+        }
+    }
 
 
 }
